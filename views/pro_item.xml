@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <!-- Action Window -->
+        <record model="ir.actions.act_window" id="sales_action_window">
+            <field name="name">Sales Items</field>
+            <field name="res_model">sales.items</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- Form view for profile -->
+        <record model="ir.ui.view" id="sales_form">
+            <field name="name">Sales Form</field>
+            <field name="model">sales.items</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="item"/>
+                            <field name="quantity"/>
+                            <field name="price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        &lt;!&ndash;Inheritance&ndash;&gt;-->
+<!--        <record id="school_teacher_ih" model="ir.ui.view">-->
+<!--            <field name="name">Teacher</field>-->
+<!--            <field name="model">school.teacher</field>-->
+<!--            <field name="inherit_id" ref="school.teacher_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <data>-->
+<!--                    -->
+<!--                </data>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <menuitem name="Sales" id="sales_menu" parent="menu_root" action="sales_action_window"/>
+    </data>
+</odoo>

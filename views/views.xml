@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+        <!-- Action Window -->
+        <record model="ir.actions.act_window" id="teacher_action_window">
+            <field name="name">Teacher</field>
+            <field name="res_model">school.teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Form view for profile -->
+        <record model="ir.ui.view" id="teacher_form">
+            <field name="name">School Form</field>
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="subject"/>
+                            <field name="age"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Inheritance-->
+        <record id="school_teacher_ih" model="ir.ui.view">
+            <field name="name">Teacher</field>
+            <field name="model">school.teacher</field>
+            <field name="inherit_id" ref="school.teacher_form"/>
+            <field name="arch" type="xml">
+                <data>
+                     <xpath expr="//field[@name='name']" position="before">
+                         <field name="cls"/>
+                     </xpath>
+
+                    <xpath expr="//field[@name='subject']" position="replace">
+                         <field name="place"/>
+                     </xpath>
+
+                    <xpath expr="//field[@name='age']" position="attributes">-->
+                    <attribute name="invisible">1</attribute>-->
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!-- Root Menu -->
+        <menuitem name="Govt School" id="menu_root"/>
+        <!-- Submenu -->
+        <menuitem name="Teacher" id="teacher_menu" parent="menu_root" action="teacher_action_window"/>
+  </data>
+</odoo>
